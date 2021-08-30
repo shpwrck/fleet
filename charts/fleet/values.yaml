@@ -1,6 +1,6 @@
 image:
   repository: rancher/fleet
-  tag: dev
+  tag: v0.3.3
   imagePullPolicy: IfNotPresent
 
 agentImage:
