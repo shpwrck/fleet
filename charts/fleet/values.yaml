@@ -10,11 +10,21 @@ agentImage:
 
 # For cluster registration the public URL of the Kubernetes API server must be set here
 # Example: https://example.com:6443
-apiServerURL: ""
+apiServerURL: "https://142.93.78.97:6443"
 
 # For cluster registration the pem encoded value of the CA of the Kubernetes API server must be set here
 # If left empty it is assumed this Kubernetes API TLS is signed by a well known CA.
-apiServerCA: ""
+apiServerCA: |
+  -----BEGIN CERTIFICATE-----
+  MIIBeDCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
+  dmVyLWNhQDE2MzAzMjc5NTQwHhcNMjEwODMwMTI1MjM0WhcNMzEwODI4MTI1MjM0
+  WjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE2MzAzMjc5NTQwWTATBgcqhkjO
+  PQIBBggqhkjOPQMBBwNCAAQ7VO4bbLYMfToyLytGProQCQPnLGAz1MlYznng7Wug
+  3MNRXT/+bK6OFPF4dEXRk7bcUERQKGTgRJZXiqnhPShFo0IwQDAOBgNVHQ8BAf8E
+  BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQU44YqEKyf8ME7o7xK67XQ
+  E3lbXuwwCgYIKoZIzj0EAwIDSQAwRgIhAPu4pYGu7g3rNA/2EscYlrWzlsOCxTsW
+  O1hZOpjgztGTAiEAmhPY/aLToMZTYAp/xqJHNXy5uo9s29DPIIqtkwxEmko=
+  -----END CERTIFICATE-----
 
 # A duration string for how often agents should report a heartbeat
 agentCheckinInterval: "15m"
@@ -28,16 +38,7 @@ ignoreClusterRegistrationLabels: false
 # comma separated list of domains or ip addresses that will not use the proxy
 noProxy: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local
 
-bootstrap:
-  # The namespace that will be autocreated and the local cluster will be registered in
-  namespace: fleet-local
-  # A repo to add at install time that will deploy to the local cluster. This allows
-  # one to fully bootstrap fleet, it's configuration and all it's downstream clusters
-  # in one shot.
-  repo: ""
-  secret: ""
-  branch: master
-  paths: ""
+bootstrap: {}
 
 global:
   cattle:
